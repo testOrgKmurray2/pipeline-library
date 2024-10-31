@@ -28,7 +28,6 @@ spec:
         stage('Main') {
             steps {
                 sh 'hostname'
-                sleep 600
             }
         }
     }
