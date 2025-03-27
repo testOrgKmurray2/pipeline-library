@@ -1,7 +1,10 @@
-//te
+//test
 pipeline {
     options {
-        disableConcurrentBuilds()  // Prevents concurrent builds from running
+        disableConcurrentBuilds()  // Ensures only one build runs at a time
+    }
+    triggers {
+        cron('* * * * *')  // Triggers the job every minute
     }
     agent {
         kubernetes {
