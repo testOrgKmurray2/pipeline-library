@@ -1,5 +1,8 @@
 //test
 pipeline {
+    options {
+        disableConcurrentBuilds()  // Prevents concurrent builds from running
+    }
     agent {
         kubernetes {
             yaml '''
