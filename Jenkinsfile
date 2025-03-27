@@ -1,4 +1,3 @@
-// Uses Declarative syntax to run commands inside a container.
 pipeline {
     agent {
         kubernetes {
@@ -20,15 +19,16 @@ spec:
             retries 2
         }
     }
-    options {
-        durabilityHint('PERFORMANCE_OPTIMIZED') // Optimize for performance, minimizing durability
-        disableResume() // Disable the ability to resume after a restart
-    }
     stages {
         stage('Main') {
             steps {
                 sh 'hostname'
+                sh 'sleep 120'  // Wait for 2 minutes
             }
+        }
+    }
+}
+
         }
     }
 }
