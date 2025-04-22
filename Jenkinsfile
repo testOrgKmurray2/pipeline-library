@@ -1,37 +1,72 @@
-//test
 pipeline {
-    options {
-        disableConcurrentBuilds()  // Ensures only one build runs at a time
-    }
-    triggers {
-        cron('* * * * *')  // Triggers the job every minute
-    }
-    agent {
-        kubernetes {
-            yaml '''
-apiVersion: v1
-kind: Pod
-spec:
-  containers:
-  - name: shell
-    image: ubuntu
-    command:
-    - sleep
-    args:
-    - infinity
-    securityContext:
-      runAsUser: 1000
-'''
-            defaultContainer 'shell'
-            retries 2
-        }
-    }
+    agent any
+
     stages {
-        stage('Main') {
+        stage('Hello') {
             steps {
-                sh 'hostname'
-                sh 'sleep 120'  // Wait for 2 minutes
+                echo 'Hello World'
+            }
+        }
+
+        stage('Stage 1') {
+            steps {
+                echo 'Running Stage 1'
+            }
+        }
+
+        stage('Stage 2') {
+            steps {
+                sleep time: 1, unit: 'SECONDS'
+            }
+        }
+
+        stage('Stage 3') {
+            steps {
+                echo 'Stage 3 - doing stuff'
+            }
+        }
+
+        stage('Stage 4') {
+            steps {
+                sleep time: 1, unit: 'SECONDS'
+            }
+        }
+
+        stage('Stage 5') {
+            steps {
+                echo 'Halfway there - Stage 5'
+            }
+        }
+
+        stage('Stage 6') {
+            steps {
+                sleep time: 1, unit: 'SECONDS'
+            }
+        }
+
+        stage('Stage 7') {
+            steps {
+                echo 'Lucky Stage 7'
+            }
+        }
+
+        stage('Stage 8') {
+            steps {
+                sleep time: 1, unit: 'SECONDS'
+            }
+        }
+
+        stage('Stage 9') {
+            steps {
+                echo 'Almost done - Stage 9'
+            }
+        }
+
+        stage('Stage 10') {
+            steps {
+                sleep time: 1, unit: 'SECONDS'
             }
         }
     }
 }
+
